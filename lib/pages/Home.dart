@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
             ),
             child: SizedBox(
                 height: 160.0,
-                width: 350.0,
+                width: MediaQuery.of(context).size.width * 0.99,
                 child: Carousel(
                   images: [
                     NetworkImage(
