@@ -4,6 +4,7 @@ import 'package:books/pages/profilePage.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NavPage extends StatefulWidget {
   const NavPage({Key? key}) : super(key: key);
@@ -17,22 +18,30 @@ class _NavPageState extends State<NavPage> {
   @override
   void initState() {
     // TODO: implement initState
-    indexPage=Home();
+    indexPage = Home();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //app bar
       appBar: AppBar(
-          backgroundColor: Colors.white24,
-          title: const Text(
+          backgroundColor: Colors.green,
+          title: Text(
             'Book Store',
-            style: TextStyle(color: Colors.black),
+            style: GoogleFonts.lato(
+                textStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w900,
+              color: Colors.white,
+            )),
           ),
           elevation: 0,
           actions: <Widget>[
             Container(
+              height: 40,
+              width: 40,
               decoration: BoxDecoration(
                   color: Colors.grey[300], shape: BoxShape.circle),
               child: IconButton(
@@ -49,7 +58,7 @@ class _NavPageState extends State<NavPage> {
               width: 10,
             ),
             CircleAvatar(
-              minRadius: 25,
+              minRadius: 22,
               backgroundImage: NetworkImage(
                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTQZemI3NMLyRNugNBReZEJThcmts9veYBrg&usqp=CAU"),
             ),
@@ -61,34 +70,53 @@ class _NavPageState extends State<NavPage> {
       //app body
       body: indexPage,
 
-
-
       //bottom nav bar
-      bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.white24,
-        buttonBackgroundColor: Colors.grey[800],
-        color: Colors.blue,
-        height: 50,
-        items: <Widget>[
-          Icon(Icons.home, size: 30,color: Colors.white,),
-          Icon(Icons.book_rounded, size: 30,color: Colors.white,),
-          Icon(Icons.person, size: 30,color: Colors.white,),
+      bottomNavigationBar: BottomNavigationBar(
+        //backgroundColor: Colors.white24,
+        //buttonBackgroundColor: Colors.grey[800],
+        //color: Colors.blue,
+        //height: 50,
+        items: [
+          BottomNavigationBarItem(
+            label: "Home",
+            icon: Icon(
+              Icons.home,
+              size: 30,
+              color: Colors.black45,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Books",
+            icon: Icon(
+              Icons.book_rounded,
+              size: 30,
+              color: Colors.black45,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: "Profile",
+            icon: Icon(
+              Icons.person,
+              size: 30,
+              color: Colors.black45,
+            ),
+          ),
         ],
         onTap: (index) {
           //Handle button tap
           setState(() {
             print(index);
-            if(index==0){
+            if (index == 0) {
               setState(() {
-                indexPage=Home();
+                indexPage = Home();
               });
-            }else if(index==1){
+            } else if (index == 1) {
               setState(() {
-                indexPage=BookaPage();
+                indexPage = BookaPage();
               });
-            }else if(index==2){
+            } else if (index == 2) {
               setState(() {
-                indexPage=ProfilePage();
+                indexPage = ProfilePage();
               });
             }
           });
