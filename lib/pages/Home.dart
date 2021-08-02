@@ -1,3 +1,4 @@
+import 'package:books/pages/bookDetailsPage.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -90,7 +91,7 @@ class _HomeState extends State<Home> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: SizedBox(
-                    height: 160.0,
+                    height: 160,
                     width: MediaQuery.of(context).size.width * 0.99,
                     child: Carousel(
                       images: [
@@ -149,43 +150,48 @@ class _HomeState extends State<Home> {
                       scrollDirection: Axis.horizontal,
                       itemCount: Books.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          width: 85.0,
-                          margin: EdgeInsets.only(left: 10, right: 10, top: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                child: Image.network(
-                                  Books[index]['Image'],
-                                  height: 130.0,
-                                  width: 85.0,
+                        return InkWell(
+                          child: Container(
+                            width: 85.0,
+                            margin: EdgeInsets.only(left: 10, right: 10, top: 5),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  child: Image.network(
+                                    Books[index]['Image'],
+                                    height: 130.0,
+                                    width: 85.0,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                Books[index]['name'],
-                                style: GoogleFonts.lato(
-                                    textStyle: TextStyle(fontSize: 15)),
-                                textAlign: TextAlign.left,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                "\$" + Books[index]['price'],
-                                style: GoogleFonts.lato(
-                                    textStyle: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold)),
-                                textAlign: TextAlign.left,
-                              )
-                            ],
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  Books[index]['name'],
+                                  style: GoogleFonts.lato(
+                                      textStyle: TextStyle(fontSize: 15)),
+                                  textAlign: TextAlign.left,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "\$" + Books[index]['price'],
+                                  style: GoogleFonts.lato(
+                                      textStyle: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold)),
+                                  textAlign: TextAlign.left,
+                                )
+                              ],
+                            ),
                           ),
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BookDetailPage(bookImage: Books[index]['Image'], bookName: Books[index]['name'], BookPrice: Books[index]['price'],)));
+                          },
                         );
                       }),
                 ),

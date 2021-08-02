@@ -1,8 +1,6 @@
 import 'package:books/pages/Home.dart';
 import 'package:books/pages/booksPage.dart';
 import 'package:books/pages/profilePage.dart';
-import 'package:carousel_pro/carousel_pro.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,11 +13,29 @@ class NavPage extends StatefulWidget {
 
 class _NavPageState extends State<NavPage> {
   var indexPage;
+  int _selectedIndex = 0;
+  
+  
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
+    
     indexPage = Home();
     super.initState();
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      if(index==0){
+        indexPage=Home();
+      }else if(index==1){
+        indexPage=BookaPage();
+      }else if(index==2){
+        indexPage=ProfilePage();
+      }
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -78,49 +94,30 @@ class _NavPageState extends State<NavPage> {
         //height: 50,
         items: [
           BottomNavigationBarItem(
-            label: "Home",
+            label: "Home" ,
             icon: Icon(
               Icons.home,
-              size: 30,
-              color: Colors.black45,
+              
             ),
           ),
           BottomNavigationBarItem(
             label: "Books",
             icon: Icon(
               Icons.book_rounded,
-              size: 30,
-              color: Colors.black45,
+              
             ),
           ),
           BottomNavigationBarItem(
             label: "Profile",
             icon: Icon(
               Icons.person,
-              size: 30,
-              color: Colors.black45,
+              
             ),
           ),
         ],
-        onTap: (index) {
-          //Handle button tap
-          setState(() {
-            print(index);
-            if (index == 0) {
-              setState(() {
-                indexPage = Home();
-              });
-            } else if (index == 1) {
-              setState(() {
-                indexPage = BookaPage();
-              });
-            } else if (index == 2) {
-              setState(() {
-                indexPage = ProfilePage();
-              });
-            }
-          });
-        },
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.green,
+        onTap: _onItemTapped,
       ),
     );
   }
