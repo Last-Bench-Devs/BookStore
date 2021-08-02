@@ -79,7 +79,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
           Container(
               width: MediaQuery.of(context).size.width * 1.00,
               height: 300,
-              color: Colors.grey[400],
+              color: Colors.grey[300],
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -136,18 +136,20 @@ class _BookDetailPageState extends State<BookDetailPage> {
             children: [
               Spacer(),
               OutlinedButton.icon(
+                
                 onPressed: () {
                   // Respond to button press
                 },
-                icon: Icon(Icons.add, size: 18),
-                label: Text("Add To Cart"),
+                icon: Icon(Icons.add_shopping_cart_outlined, size: 18,color: Colors.green,),
+                label: Text("Add To Cart",style: TextStyle(color: Colors.green),),
               ),
               Spacer(),
               ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(primary: Colors.green),
                 onPressed: () {
                   // Respond to button press
                 },
-                icon: Icon(Icons.add, size: 18),
+                icon: Icon(Icons.shopping_bag_rounded, size: 18),
                 label: Text("Buy Now"),
               ),
               Spacer()
