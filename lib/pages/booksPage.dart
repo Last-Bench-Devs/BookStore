@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BookaPage extends StatefulWidget {
@@ -55,66 +56,71 @@ class _BookaPageState extends State<BookaPage> {
                 itemBuilder: (context, index) {
                   return InkWell(
                       child: Container(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          child: Image.network(
-                            Books[index]['Image'],
-                            height: 110.0,
-                            width: 65.0,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                Books[index]['name'],
-                                style: GoogleFonts.lato(
-                                  textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "To be delivered on Sunday",
-                                style: GoogleFonts.lato(
-                                  textStyle: TextStyle(
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 5,),
-                              Text(
-                                "Ordered on 29th July",
-                                style: GoogleFonts.lato(
-                                  textStyle: TextStyle(
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        OutlinedButton(
-                          onPressed: () {
-                            // Respond to button press
-                          },
-                          child: Text(
-                            "Track Package",
-                            style: TextStyle(
-                              color: Colors.green,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            child: Image.network(
+                              Books[index]['Image'],
+                              height: 110.0,
+                              width: 65.0,
                             ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  Books[index]['name'],
+                                  style: GoogleFonts.lato(
+                                    textStyle: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "To be delivered on Sunday",
+                                  style: GoogleFonts.lato(
+                                    textStyle: TextStyle(
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Ordered on 29th July",
+                                  style: GoogleFonts.lato(
+                                    textStyle: TextStyle(
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          OutlinedButton(
+                            onPressed: () {
+                              // Respond to button press
+                            },
+                            child: Text(
+                              "Track Package",
+                              style: TextStyle(
+                                color: Colors.green,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ));
                 },

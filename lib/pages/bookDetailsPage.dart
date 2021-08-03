@@ -1,4 +1,5 @@
 import 'package:books/pages/Home.dart';
+import 'package:books/pages/cartPage.dart';
 import 'package:books/pages/navPage.dart';
 import 'package:books/widgets/review.dart';
 import 'package:flutter/material.dart';
@@ -64,10 +65,20 @@ class _BookDetailPageState extends State<BookDetailPage> {
             SizedBox(
               width: 10,
             ),
-            CircleAvatar(
-              minRadius: 22,
-              backgroundImage: NetworkImage(
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTQZemI3NMLyRNugNBReZEJThcmts9veYBrg&usqp=CAU"),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300], shape: BoxShape.circle),
+              child: IconButton(
+                icon: const Icon(Icons.shopping_cart_rounded),
+                tooltip: 'Show Snackbar',
+                color: Colors.grey[800],
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => CartPage()));
+                },
+              ),
             ),
             SizedBox(
               width: 10,
@@ -89,9 +100,12 @@ class _BookDetailPageState extends State<BookDetailPage> {
                   Container(
                     color: Colors.green,
                     height: 270,
-                    child: Image.network(
-                      widget.bookImage,
-                      fit: BoxFit.cover,
+                    child: Hero(
+                      tag: widget.bookImage,
+                      child: Image.network(
+                        widget.bookImage,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   )
                 ],

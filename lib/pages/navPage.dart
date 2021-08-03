@@ -1,5 +1,6 @@
 import 'package:books/pages/Home.dart';
 import 'package:books/pages/booksPage.dart';
+import 'package:books/pages/cartPage.dart';
 import 'package:books/pages/profilePage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -72,10 +73,19 @@ class _NavPageState extends State<NavPage> {
             SizedBox(
               width: 10,
             ),
-            CircleAvatar(
-              minRadius: 22,
-              backgroundImage: NetworkImage(
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTQZemI3NMLyRNugNBReZEJThcmts9veYBrg&usqp=CAU"),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300], shape: BoxShape.circle),
+              child: IconButton(
+                icon: const Icon(Icons.shopping_cart_rounded),
+                tooltip: 'Show Snackbar',
+                color: Colors.grey[800],
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CartPage()));
+                },
+              ),
             ),
             SizedBox(
               width: 10,
@@ -91,6 +101,7 @@ class _NavPageState extends State<NavPage> {
         //buttonBackgroundColor: Colors.grey[800],
         //color: Colors.blue,
         //height: 50,
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             label: "Home",
@@ -104,6 +115,7 @@ class _NavPageState extends State<NavPage> {
               Icons.book_rounded,
             ),
           ),
+         
           BottomNavigationBarItem(
             label: "Profile",
             icon: Icon(

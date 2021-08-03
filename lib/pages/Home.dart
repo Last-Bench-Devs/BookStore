@@ -157,13 +157,16 @@ class _HomeState extends State<Home> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                ClipRRect(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  child: Image.network(
-                                    Books[index]['Image'],
-                                    height: 130.0,
-                                    width: 85.0,
+                                Hero(
+                                  tag: Books[index]['Image'],
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    child: Image.network(
+                                      Books[index]['Image'],
+                                      height: 130.0,
+                                      width: 85.0,
+                                    ),
                                   ),
                                 ),
                                 SizedBox(
