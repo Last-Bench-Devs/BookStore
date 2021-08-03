@@ -1,5 +1,6 @@
 import 'package:books/pages/Home.dart';
 import 'package:books/pages/navPage.dart';
+import 'package:books/widgets/review.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -74,9 +75,11 @@ class _BookDetailPageState extends State<BookDetailPage> {
           ]),
 
       //app body
-      body: Column(
-        children: [
-          Container(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
               width: MediaQuery.of(context).size.width * 1.00,
               height: 300,
               color: Colors.grey[300],
@@ -92,70 +95,107 @@ class _BookDetailPageState extends State<BookDetailPage> {
                     ),
                   )
                 ],
-              )),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 10,
               ),
-              Text(
-                widget.bookName,
-                style: GoogleFonts.lato(
-                    textStyle:
-                        TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                textAlign: TextAlign.left,
-              ),
-            ],
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width * 0.91,
-            margin: EdgeInsets.all(13),
-            child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: 13,
-              ),
-              Text(
-                "\₹" + widget.BookPrice,
-                style: GoogleFonts.lato(
-                    textStyle:
-                        TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
-                textAlign: TextAlign.left,
-              ),
-            ],
-          ),
-          SizedBox(height: 30,),
-          Row(
-            children: [
-              Spacer(),
-              OutlinedButton.icon(
-                
-                onPressed: () {
-                  // Respond to button press
-                },
-                icon: Icon(Icons.add_shopping_cart_outlined, size: 18,color: Colors.green,),
-                label: Text("Add To Cart",style: TextStyle(color: Colors.green),),
-              ),
-              Spacer(),
-              ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(primary: Colors.green),
-                onPressed: () {
-                  // Respond to button press
-                },
-                icon: Icon(Icons.shopping_bag_rounded, size: 18),
-                label: Text("Buy Now"),
-              ),
-              Spacer()
-            ],
-          )
-        ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  widget.bookName,
+                  style: GoogleFonts.lato(
+                      textStyle:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                  textAlign: TextAlign.left,
+                ),
+              ],
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.91,
+              margin: EdgeInsets.all(13),
+              child: Text(
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 13,
+                ),
+                Text(
+                  "\₹" + widget.BookPrice,
+                  style: GoogleFonts.lato(
+                      textStyle:
+                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+                  textAlign: TextAlign.left,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Row(
+              children: [
+                Spacer(),
+                OutlinedButton.icon(
+                  onPressed: () {
+                    // Respond to button press
+                  },
+                  icon: Icon(
+                    Icons.add_shopping_cart_outlined,
+                    size: 18,
+                    color: Colors.green,
+                  ),
+                  label: Text(
+                    "Add To Cart",
+                    style: TextStyle(color: Colors.green),
+                  ),
+                ),
+                Spacer(),
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(primary: Colors.green),
+                  onPressed: () {
+                    // Respond to button press
+                  },
+                  icon: Icon(Icons.shopping_bag_rounded, size: 18),
+                  label: Text("Buy Now"),
+                ),
+                Spacer()
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Reviews",
+                  style: GoogleFonts.lato(
+                      textStyle:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                  textAlign: TextAlign.left,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Review(
+              review: [],
+            ),
+            Review(
+              review: [],
+            ),
+          ],
+        ),
       ),
     );
   }
