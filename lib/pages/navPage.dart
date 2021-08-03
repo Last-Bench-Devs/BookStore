@@ -14,25 +14,24 @@ class NavPage extends StatefulWidget {
 class _NavPageState extends State<NavPage> {
   var indexPage;
   int _selectedIndex = 0;
-  
-  
+
   @override
   void initState() {
     // ignore: todo
     // TODO: implement initState
-    
+
     indexPage = Home();
     super.initState();
   }
 
   void _onItemTapped(int index) {
     setState(() {
-      if(index==0){
-        indexPage=Home();
-      }else if(index==1){
-        indexPage=BookaPage();
-      }else if(index==2){
-        indexPage=ProfilePage();
+      if (index == 0) {
+        indexPage = Home();
+      } else if (index == 1) {
+        indexPage = BookaPage();
+      } else if (index == 2) {
+        indexPage = ProfilePage();
       }
       _selectedIndex = index;
     });
@@ -94,24 +93,21 @@ class _NavPageState extends State<NavPage> {
         //height: 50,
         items: [
           BottomNavigationBarItem(
-            label: "Home" ,
+            label: "Home",
             icon: Icon(
               Icons.home,
-              
             ),
           ),
           BottomNavigationBarItem(
-            label: "Books",
+            label: "My Orders",
             icon: Icon(
               Icons.book_rounded,
-              
             ),
           ),
           BottomNavigationBarItem(
             label: "Profile",
             icon: Icon(
               Icons.person,
-              
             ),
           ),
         ],
